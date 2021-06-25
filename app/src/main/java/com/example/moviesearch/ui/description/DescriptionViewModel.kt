@@ -1,6 +1,7 @@
 package com.example.moviesearch.ui.description
 
 import androidx.lifecycle.LiveData
+import com.example.moviesearch.BuildConfig
 import com.example.moviesearch.model.AppState
 import com.example.moviesearch.model.provider.ITheMovieDBProvider
 import com.example.moviesearch.ui.base.BaseViewModel
@@ -15,7 +16,7 @@ class DescriptionViewModel(val iTheMovieDBProvider: ITheMovieDBProvider) :
         viewModelCoroutineScope.launch {
             liveDataViewModel.value = AppState.Success(
                 iTheMovieDBProvider.getMovie(
-                    "274f828ad283bd634ef4fc1ee4af255f",
+                    BuildConfig.MOVIE_API_KEY,
                     name
                 )
             )

@@ -2,20 +2,21 @@ package com.example.moviesearch.model.api
 
 import com.example.moviesearch.model.repository.description_movie.DescriptionMovie
 import com.example.moviesearch.model.repository.list_of_movie.ListOfMovie
+import retrofit2.Call
 import retrofit2.http.GET
-import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface ApiService {
 
-    @GET("movie/550?{api_key}")
+    @GET("movie/550?")
     suspend fun getListOfMovie(
-        @Path("api_key") api_key: String
-    ): List<ListOfMovie>
+        @Query("api_key") api_key: String
+    ): ListOfMovie
 
-    @GET("search/movie?{api_key}&{query}")
+    @GET("search/movie?")
     suspend fun getMovie(
-        @Path("api_key") api_key: String,
-        @Path("query") query: String
+        @Query("api_key") api_key: String,
+        @Query("query") query: String
     ): DescriptionMovie
 
 }

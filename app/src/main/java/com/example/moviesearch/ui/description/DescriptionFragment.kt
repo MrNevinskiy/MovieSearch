@@ -3,6 +3,7 @@ package com.example.moviesearch.ui.description
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviesearch.R
 import com.example.moviesearch.databinding.FragmentDescriptionBinding
@@ -14,6 +15,7 @@ class DescriptionFragment : Fragment(R.layout.fragment_description) {
     private val viewModel: DescriptionViewModel by viewModel()
     private lateinit var binding: FragmentDescriptionBinding
     private lateinit var recyclerView: RecyclerView
+    private val args: DescriptionFragmentArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
