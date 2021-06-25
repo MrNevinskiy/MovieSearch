@@ -20,7 +20,7 @@ class MainMenuFragment : Fragment(R.layout.fragment_main_menu) {
     private val viewModel: MainMenuViewModel by viewModel()
     private lateinit var binding: FragmentMainMenuBinding
     private lateinit var recyclerView: RecyclerView
-    private var query: String = ""
+    private var query: String? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -48,6 +48,7 @@ class MainMenuFragment : Fragment(R.layout.fragment_main_menu) {
         recyclerView = view.findViewById(R.id.main_fragment_recycler_view)
         recyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
         binding.findMovie.setOnClickListener {
+            query = binding.editTextMovie.text.toString()
             toDescriptionScreen()
         }
     }

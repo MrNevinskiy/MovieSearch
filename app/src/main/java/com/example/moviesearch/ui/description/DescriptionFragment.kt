@@ -2,12 +2,16 @@ package com.example.moviesearch.ui.description
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviesearch.R
 import com.example.moviesearch.databinding.FragmentDescriptionBinding
 import com.example.moviesearch.model.AppState
+import com.example.moviesearch.model.repository.description_movie.DescriptionMovie
+import com.example.moviesearch.ui.adapter.DescriptionAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DescriptionFragment : Fragment(R.layout.fragment_description) {
@@ -23,11 +27,32 @@ class DescriptionFragment : Fragment(R.layout.fragment_description) {
         viewModel.subscribe().observe(viewLifecycleOwner, {
             renderData(it)
         })
-        recyclerView = view.findViewById(R.id.description_recycler_view)
+        init(view)
+
     }
 
+    private fun init(view: View) {
+        args.queryMovie?.let {
+            viewModel.getMovieByID(it)
+        }
+        recyclerView = view.findViewById(R.id.description_recycler_view)
+        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+    }
+
+
     private fun renderData(appState: AppState?) {
-        TODO("Not yet implemented")
+        when (appState) {
+            is AppState.Success<*> -> {
+                when (appState.data) {
+                    is DescriptionMovie -> {
+                        recyclerView.adapter = DescriptionAdapter(appState.data)
+                        binding.descriptionTitleRv.text = appState.data.results[0].title
+                        binding.descriptionReleaseRv.text = appState.data.results[0].releaseDate
+                    }
+                }
+            }
+            else -> Toast.makeText(context, "ErrorData", Toast.LENGTH_LONG).show()
+        }
     }
 
 }
