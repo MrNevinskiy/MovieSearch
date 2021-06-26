@@ -14,7 +14,6 @@ import com.example.moviesearch.model.AppState
 import com.example.moviesearch.model.repository.description_movie.DescriptionMovie
 import com.example.moviesearch.ui.adapter.DescriptionAdapter
 import com.example.moviesearch.ui.image_loader.IGlideImageLoader
-import org.koin.android.ext.android.bind
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DescriptionFragment : Fragment(R.layout.fragment_description) {

@@ -5,19 +5,19 @@ import com.google.gson.annotations.SerializedName
 
 data class Results (
 
-    @SerializedName("adult") var adult : Boolean,
-    @SerializedName("backdrop_path") var backdropPath : String,
-    @SerializedName("genre_ids") var genreIds : List<Int>,
-    @SerializedName("id") var id : Int,
-    @SerializedName("original_language") var originalLanguage : String,
-    @SerializedName("original_title") var originalTitle : String,
-    @SerializedName("overview") var overview : String,
-    @SerializedName("popularity") var popularity : Double,
-    @SerializedName("poster_path") var posterPath : String,
-    @SerializedName("release_date") var releaseDate : String,
-    @SerializedName("title") var title : String,
-    @SerializedName("video") var video : Boolean,
-    @SerializedName("vote_average") var voteAverage : Double,
-    @SerializedName("vote_count") var voteCount : Int
+    @field:SerializedName("adult") var adult : Boolean,
+    @field:SerializedName("backdrop_path") var backdropPath : String,
+    @field:SerializedName("genre_ids") var genreIds : List<Int>,
+    @field:SerializedName("id") var id : Int,
+    @field:SerializedName("original_language") var originalLanguage : String,
+    @field:SerializedName("original_title") var originalTitle : String,
+    @field:SerializedName("overview") var overview : String,
+    @field:SerializedName("popularity") var popularity : Double,
+    @field:SerializedName("poster_path") var posterPath : String,
+    @field:SerializedName("release_date") var releaseDate : String,
+    @field:SerializedName("title") var title : String,
+    @field:SerializedName("video") var video : Boolean,
+    @field:SerializedName("vote_average") var voteAverage : Double,
+    @field:SerializedName("vote_count") var voteCount : Int
 
 )

@@ -5,9 +5,9 @@ import com.google.gson.annotations.SerializedName
 
 data class DescriptionMovie (
 
-    @SerializedName("page") var page : Int,
-    @SerializedName("results") var results : List<Results>,
-    @SerializedName("total_pages") var totalPages : Int,
-    @SerializedName("total_results") var totalResults : Int
+    @field:SerializedName("page") var page : Int,
+    @field:SerializedName("results") var results : List<Results>,
+    @field:SerializedName("total_pages") var totalPages : Int,
+    @field:SerializedName("total_results") var totalResults : Int
 
 )
