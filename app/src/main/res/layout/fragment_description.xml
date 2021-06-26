@@ -15,7 +15,7 @@
 
 
             <ImageView
-                android:id="@+id/description_avatar_img_rv"
+                android:id="@+id/description_back_img_rv"
                 android:layout_width="wrap_content"
                 android:layout_height="300dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -24,7 +24,7 @@
                 tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
             <ImageView
-                android:id="@+id/description_back_img_rv"
+                android:id="@+id/description_avatar_img_rv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="140dp"
@@ -43,7 +43,7 @@
                 android:layout_marginTop="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.016"
-                app:layout_constraintStart_toEndOf="@+id/description_back_img_rv"
+                app:layout_constraintStart_toEndOf="@+id/description_avatar_img_rv"
                 app:layout_constraintTop_toBottomOf="@+id/description_genre_rv"
                 app:srcCompat="@android:drawable/btn_star_big_on" />
 
@@ -65,9 +65,9 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="130dp"
                 android:text="@string/release"
-                app:layout_constraintEnd_toEndOf="@+id/description_avatar_img_rv"
+                app:layout_constraintEnd_toEndOf="@+id/description_back_img_rv"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/description_back_img_rv"
+                app:layout_constraintStart_toEndOf="@+id/description_avatar_img_rv"
                 app:layout_constraintTop_toBottomOf="@+id/description_title_rv" />
 
             <TextView
@@ -79,7 +79,7 @@
                 android:text="@string/time"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.071"
-                app:layout_constraintStart_toEndOf="@+id/description_back_img_rv"
+                app:layout_constraintStart_toEndOf="@+id/description_avatar_img_rv"
                 app:layout_constraintTop_toBottomOf="@+id/description_release_rv" />
 
             <TextView
@@ -91,7 +91,7 @@
                 android:text="@string/genre"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.071"
-                app:layout_constraintStart_toEndOf="@+id/description_back_img_rv"
+                app:layout_constraintStart_toEndOf="@+id/description_avatar_img_rv"
                 app:layout_constraintTop_toBottomOf="@+id/description_time_rv" />
 
             <TextView
@@ -115,7 +115,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.1"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/description_back_img_rv" />
+                app:layout_constraintTop_toBottomOf="@+id/description_avatar_img_rv" />
 
             <TextView
                 android:id="@+id/description_about_rv"

@@ -10,9 +10,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.moviesearch.R
 import com.example.moviesearch.model.repository.list_of_movie.ListOfMovie
 import com.example.moviesearch.ui.adapter.MainMenuAdapter.MainMenuAdapterVH
+import com.example.moviesearch.ui.image_loader.IGlideImageLoader
 import com.example.moviesearch.ui.main.MainMenuFragmentDirections
 
-class MainMenuAdapter(private val list: ListOfMovie) : RecyclerView.Adapter<MainMenuAdapterVH>() {
+class MainMenuAdapter(private val list: ListOfMovie) : RecyclerView.Adapter<MainMenuAdapterVH>(){
+
+    private lateinit var imageLoader: IGlideImageLoader<ImageView>
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainMenuAdapterVH {
         var itemView =
@@ -21,8 +24,11 @@ class MainMenuAdapter(private val list: ListOfMovie) : RecyclerView.Adapter<Main
     }
 
     override fun onBindViewHolder(holder: MainMenuAdapterVH, position: Int) {
+        var avatar_url = list.productionCompanies[position].logoPath
+
         holder.about?.text = list.productionCompanies[position].name
         holder.title?.text = list.productionCompanies[position].originCountry
+        holder.mainAvatar?.let { imageLoader.loadInto(avatar_url, it) }
         holder.mainAvatar?.setOnClickListener { view ->
             view.findNavController().navigate(
                 MainMenuFragmentDirections.actionMainMenuFragmentToDescriptionFragment(list.productionCompanies[position].name)
