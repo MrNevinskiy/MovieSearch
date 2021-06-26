@@ -12,6 +12,7 @@ import com.example.moviesearch.R
 import com.example.moviesearch.databinding.FragmentMainMenuBinding
 import com.example.moviesearch.model.AppState
 import com.example.moviesearch.model.repository.list_of_movie.ListOfMovie
+import com.example.moviesearch.model.repository.top_movie.TopMovieListy
 import com.example.moviesearch.ui.adapter.MainMenuAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -44,7 +45,7 @@ class MainMenuFragment : Fragment(R.layout.fragment_main_menu) {
     }
 
     private fun init(view: View) {
-        viewModel.getListOfMovie()
+        viewModel.getTopMovie()
         recyclerView = view.findViewById(R.id.main_fragment_recycler_view)
         recyclerView.layoutManager = GridLayoutManager(requireContext(), 3)
         binding.findMovie.setOnClickListener {
@@ -56,8 +57,12 @@ class MainMenuFragment : Fragment(R.layout.fragment_main_menu) {
     private fun renderData(appState: AppState?) {
         when (appState) {
             is AppState.Success<*> -> {
+//                when (appState.data) {
+//                    is ListOfMovie -> recyclerView.adapter = MainMenuAdapter(appState.data)
+//                }
                 when (appState.data) {
-                    is ListOfMovie -> recyclerView.adapter = MainMenuAdapter(appState.data)
+                    is TopMovieListy -> {
+                        recyclerView.adapter = MainMenuAdapter(appState.data)}
                 }
             }
             else -> Toast.makeText(context, "ErrorData", Toast.LENGTH_LONG).show()

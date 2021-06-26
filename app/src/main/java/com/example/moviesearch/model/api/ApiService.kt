@@ -19,7 +19,7 @@ interface ApiService {
         @Query("query") query: String
     ): DescriptionMovie
 
-    @GET("/movie/top_rated?")
+    @GET("movie/top_rated?")
     suspend fun getTopMovie(
         @Query("api_key") api_key: String
     ): TopMovieListy

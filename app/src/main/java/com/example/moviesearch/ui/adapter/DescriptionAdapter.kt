@@ -10,10 +10,13 @@ import com.example.moviesearch.R
 import com.example.moviesearch.model.repository.description_movie.DescriptionMovie
 import com.example.moviesearch.ui.adapter.DescriptionAdapter.DescriptionAdapterHV
 import com.example.moviesearch.ui.image_loader.IGlideImageLoader
+import org.koin.java.KoinJavaComponent.inject
 
 class DescriptionAdapter(private val descriptionMovie: DescriptionMovie): RecyclerView.Adapter<DescriptionAdapterHV>() {
 
-    private lateinit var imageLoader: IGlideImageLoader<ImageView>
+    private val iGlideImageLoader: IGlideImageLoader<ImageView> by inject(
+        IGlideImageLoader::class.java
+    )
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DescriptionAdapterHV {
         var itemView =

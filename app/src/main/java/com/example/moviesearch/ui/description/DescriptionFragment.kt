@@ -15,6 +15,7 @@ import com.example.moviesearch.model.repository.description_movie.DescriptionMov
 import com.example.moviesearch.ui.adapter.DescriptionAdapter
 import com.example.moviesearch.ui.image_loader.IGlideImageLoader
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.java.KoinJavaComponent
 
 class DescriptionFragment : Fragment(R.layout.fragment_description) {
 
@@ -23,7 +24,9 @@ class DescriptionFragment : Fragment(R.layout.fragment_description) {
     private lateinit var recyclerView: RecyclerView
     private val args: DescriptionFragmentArgs by navArgs()
 
-    private lateinit var imageLoader: IGlideImageLoader<ImageView>
+    private val imageLoader: IGlideImageLoader<ImageView> by KoinJavaComponent.inject(
+        IGlideImageLoader::class.java
+    )
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -40,7 +43,6 @@ class DescriptionFragment : Fragment(R.layout.fragment_description) {
             viewModel.getMovieByID(it)
         }
         recyclerView = view.findViewById(R.id.description_recycler_view)
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
     }
 
 

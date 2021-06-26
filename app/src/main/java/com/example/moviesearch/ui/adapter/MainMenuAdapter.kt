@@ -8,14 +8,15 @@ import android.widget.TextView
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviesearch.R
-import com.example.moviesearch.model.repository.list_of_movie.ListOfMovie
+import com.example.moviesearch.model.repository.top_movie.TopMovieListy
 import com.example.moviesearch.ui.adapter.MainMenuAdapter.MainMenuAdapterVH
 import com.example.moviesearch.ui.image_loader.IGlideImageLoader
 import com.example.moviesearch.ui.main.MainMenuFragmentDirections
+import org.koin.java.KoinJavaComponent.inject
 
-class MainMenuAdapter(private val list: ListOfMovie) : RecyclerView.Adapter<MainMenuAdapterVH>(){
+class MainMenuAdapter(private val list: TopMovieListy) : RecyclerView.Adapter<MainMenuAdapterVH>() {
 
-    private lateinit var imageLoader: IGlideImageLoader<ImageView>
+    private val iGlideImageLoader: IGlideImageLoader<ImageView> by inject(IGlideImageLoader::class.java)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainMenuAdapterVH {
         var itemView =
@@ -24,19 +25,19 @@ class MainMenuAdapter(private val list: ListOfMovie) : RecyclerView.Adapter<Main
     }
 
     override fun onBindViewHolder(holder: MainMenuAdapterVH, position: Int) {
-        var avatar_url = list.productionCompanies[position].logoPath
+        var avatarUrl = list.results[position].posterPath
+        holder.mainAvatar?.let { iGlideImageLoader.loadInto(avatarUrl, it) }
 
-        holder.about?.text = list.productionCompanies[position].name
-        holder.title?.text = list.productionCompanies[position].originCountry
-        holder.mainAvatar?.let { imageLoader.loadInto(avatar_url, it) }
+        holder.about?.text = list.results[position].title
+        holder.title?.text = list.results[position].originalTitle
         holder.mainAvatar?.setOnClickListener { view ->
             view.findNavController().navigate(
-                MainMenuFragmentDirections.actionMainMenuFragmentToDescriptionFragment(list.productionCompanies[position].name)
+                MainMenuFragmentDirections.actionMainMenuFragmentToDescriptionFragment(list.results[position].title)
             )
         }
     }
 
-    override fun getItemCount(): Int = list.productionCompanies.size
+    override fun getItemCount(): Int = list.results.size
 
     inner class MainMenuAdapterVH(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var about: TextView? = null
@@ -50,5 +51,9 @@ class MainMenuAdapter(private val list: ListOfMovie) : RecyclerView.Adapter<Main
             mainRating = itemView.findViewById(R.id.main_rating_rv)
             mainAvatar = itemView.findViewById(R.id.main_avatar_rv)
         }
+    }
+
+    companion object {
+        val URL: String = "https://image.tmdb.org/t/p/w500"
     }
 }

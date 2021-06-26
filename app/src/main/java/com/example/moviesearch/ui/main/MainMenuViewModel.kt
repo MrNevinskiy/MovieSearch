@@ -18,12 +18,11 @@ class MainMenuViewModel(val iTheMovieDBProvider: ITheMovieDBProvider) : BaseView
         }
     }
 
-    fun findMovieByName(name: String) {
+    fun getTopMovie(){
         viewModelCoroutineScope.launch {
             liveDataViewModel.value = AppState.Success(
-                iTheMovieDBProvider.getMovie(
-                    BuildConfig.MOVIE_API_KEY,
-                    name
+                iTheMovieDBProvider.getTopMovie(
+                    BuildConfig.MOVIE_API_KEY
                 )
             )
         }
