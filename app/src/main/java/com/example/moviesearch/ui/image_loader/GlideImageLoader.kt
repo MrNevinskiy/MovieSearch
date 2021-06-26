@@ -13,7 +13,7 @@ class GlideImageLoader : IGlideImageLoader<ImageView> {
     override fun loadInto(url: String, container: ImageView) {
         Glide.with(container.context)
             .asBitmap()
-            .load(url)
+            .load(URL+url)
             .listener(object : RequestListener<Bitmap> {
                 override fun onLoadFailed(
                     e: GlideException?,
@@ -38,5 +38,9 @@ class GlideImageLoader : IGlideImageLoader<ImageView> {
                     return false
                 }
             }).into(container)
+    }
+
+    companion object{
+        val URL: String = "https://image.tmdb.org/t/p/w500"
     }
 }
