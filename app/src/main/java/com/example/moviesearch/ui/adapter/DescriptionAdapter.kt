@@ -7,12 +7,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.moviesearch.R
-import com.example.moviesearch.model.repository.description_movie.DescriptionMovie
+import com.example.moviesearch.model.repository.billed_cast.BilledCast
 import com.example.moviesearch.ui.adapter.DescriptionAdapter.DescriptionAdapterHV
 import com.example.moviesearch.ui.image_loader.IGlideImageLoader
 import org.koin.java.KoinJavaComponent.inject
 
-class DescriptionAdapter(private val descriptionMovie: DescriptionMovie): RecyclerView.Adapter<DescriptionAdapterHV>() {
+class DescriptionAdapter(private val billedCast: BilledCast): RecyclerView.Adapter<DescriptionAdapterHV>() {
 
     private val iGlideImageLoader: IGlideImageLoader<ImageView> by inject(
         IGlideImageLoader::class.java
@@ -25,10 +25,18 @@ class DescriptionAdapter(private val descriptionMovie: DescriptionMovie): Recycl
     }
 
     override fun onBindViewHolder(holder: DescriptionAdapterHV, position: Int) {
-        // TODO: 27.06.2021  
+        holder.nameHero?.text = billedCast.cast[position].character
+        holder.realName?.text = billedCast.cast[position].originalName
+        if (billedCast.cast[position].profilePath != null){
+            holder.avatar?.let { billedCast.cast[position].profilePath?.let { it1 ->
+                iGlideImageLoader.loadInto(
+                    it1, it)
+            } }
+        }
+
     }
 
-    override fun getItemCount(): Int = descriptionMovie.results.size
+    override fun getItemCount(): Int = billedCast.cast.size
 
     inner class DescriptionAdapterHV (itemView: View) : RecyclerView.ViewHolder(itemView) {
         var avatar: ImageView? = null

@@ -11,13 +11,6 @@ class MainMenuViewModel(val iTheMovieDBProvider: ITheMovieDBProvider) : BaseView
 
     fun subscribe(): LiveData<AppState> = liveDataViewModel
 
-    fun getListOfMovie() {
-        viewModelCoroutineScope.launch {
-            liveDataViewModel.value =
-                AppState.Success(iTheMovieDBProvider.getListOfMovie(BuildConfig.MOVIE_API_KEY))
-        }
-    }
-
     fun getTopMovie(){
         viewModelCoroutineScope.launch {
             liveDataViewModel.value = AppState.Success(

@@ -12,6 +12,17 @@ class DescriptionViewModel(val iTheMovieDBProvider: ITheMovieDBProvider) :
 
     fun subscribe(): LiveData<AppState> = liveDataViewModel
 
+    fun getBilledCast(id: Int) {
+        viewModelCoroutineScope.launch {
+            liveDataViewModel.value = AppState.Success(
+                iTheMovieDBProvider.getBilledCast(
+                    BuildConfig.MOVIE_API_KEY,
+                    id
+                )
+            )
+        }
+    }
+
     fun getMovieByID(name: String) {
         viewModelCoroutineScope.launch {
             liveDataViewModel.value = AppState.Success(

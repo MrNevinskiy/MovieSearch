@@ -28,8 +28,8 @@ class MainMenuAdapter(private val list: TopMovieListy) : RecyclerView.Adapter<Ma
         var avatarUrl = list.results[position].posterPath
         holder.mainAvatar?.let { iGlideImageLoader.loadInto(avatarUrl, it) }
 
-        holder.about?.text = list.results[position].title
-        holder.title?.text = list.results[position].originalTitle
+        holder.about?.text = list.results[position].releaseDate
+        holder.title?.text = list.results[position].title
         holder.mainAvatar?.setOnClickListener { view ->
             view.findNavController().navigate(
                 MainMenuFragmentDirections.actionMainMenuFragmentToDescriptionFragment(list.results[position].title)
@@ -46,7 +46,7 @@ class MainMenuAdapter(private val list: TopMovieListy) : RecyclerView.Adapter<Ma
         var mainAvatar: ImageView? = null
 
         init {
-            about = itemView.findViewById(R.id.main_about_rv)
+            about = itemView.findViewById(R.id.main_date_rv)
             title = itemView.findViewById(R.id.main_title_rv)
             mainRating = itemView.findViewById(R.id.main_rating_rv)
             mainAvatar = itemView.findViewById(R.id.main_avatar_rv)

@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/gray">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -16,24 +17,23 @@
 
             <ImageView
                 android:id="@+id/description_back_img_rv"
-                android:layout_width="wrap_content"
-                android:layout_height="300dp"
+                android:layout_width="430dp"
+                android:layout_height="240dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@tools:sample/backgrounds/scenic" />
+                tools:srcCompat="@drawable/back_img" />
 
             <ImageView
                 android:id="@+id/description_avatar_img_rv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="140dp"
+                android:layout_width="125dp"
+                android:layout_height="175dp"
+                android:layout_marginTop="50dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.05"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/description_title_rv"
-                tools:srcCompat="@tools:sample/avatars"
-                android:src="@drawable/tset_rv"/>
+                tools:srcCompat="@drawable/avatar_img"/>
 
             <ImageView
                 android:id="@+id/description_rating_img_rv"
@@ -42,10 +42,10 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.016"
+                app:layout_constraintHorizontal_bias="0.050"
                 app:layout_constraintStart_toEndOf="@+id/description_avatar_img_rv"
                 app:layout_constraintTop_toBottomOf="@+id/description_genre_rv"
-                app:srcCompat="@android:drawable/btn_star_big_on" />
+                app:srcCompat="@android:drawable/btn_radio" />
 
             <TextView
                 android:id="@+id/description_title_rv"
@@ -53,7 +53,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="@string/title"
-                android:textSize="20sp"
+                android:textColor="@color/white"
+                android:textSize="30sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -63,11 +64,26 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="130dp"
+                android:layout_marginTop="50dp"
+                android:textColor="@color/white"
+                android:textSize="15sp"
                 android:text="@string/release"
                 app:layout_constraintEnd_toEndOf="@+id/description_back_img_rv"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/description_avatar_img_rv"
+                app:layout_constraintTop_toBottomOf="@+id/description_title_rv" />
+
+            <TextView
+                android:id="@+id/description_release_date_rv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:text="@string/release"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="@+id/description_back_img_rv"
+                app:layout_constraintHorizontal_bias="0.077"
+                app:layout_constraintStart_toEndOf="@+id/description_release_rv"
                 app:layout_constraintTop_toBottomOf="@+id/description_title_rv" />
 
             <TextView
@@ -77,6 +93,9 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:text="@string/time"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.071"
                 app:layout_constraintStart_toEndOf="@+id/description_avatar_img_rv"
@@ -89,21 +108,26 @@
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:text="@string/genre"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:visibility="invisible"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.071"
                 app:layout_constraintStart_toEndOf="@+id/description_avatar_img_rv"
-                app:layout_constraintTop_toBottomOf="@+id/description_time_rv" />
+                app:layout_constraintTop_toBottomOf="@+id/description_time_rv"/>
 
             <TextView
                 android:id="@+id/description_score_rv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:text="@string/score"
+                android:layout_width="39dp"
+                android:layout_height="31dp"
+                android:layout_marginStart="9dp"
+                android:layout_marginTop="21dp"
+                android:text="8.0"
+                android:textColor="@color/white"
+                android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.057"
-                app:layout_constraintStart_toEndOf="@+id/description_rating_img_rv"
+                app:layout_constraintHorizontal_bias="0.094"
+                app:layout_constraintStart_toEndOf="@+id/description_avatar_img_rv"
                 app:layout_constraintTop_toBottomOf="@+id/description_genre_rv" />
 
             <TextView

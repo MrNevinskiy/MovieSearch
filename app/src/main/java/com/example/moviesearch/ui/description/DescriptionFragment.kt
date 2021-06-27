@@ -11,9 +11,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.moviesearch.R
 import com.example.moviesearch.databinding.FragmentDescriptionBinding
 import com.example.moviesearch.model.AppState
+import com.example.moviesearch.model.repository.billed_cast.BilledCast
 import com.example.moviesearch.model.repository.description_movie.DescriptionMovie
 import com.example.moviesearch.ui.adapter.DescriptionAdapter
 import com.example.moviesearch.ui.image_loader.IGlideImageLoader
+import org.koin.android.ext.android.bind
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.java.KoinJavaComponent
 
@@ -47,13 +49,14 @@ class DescriptionFragment : Fragment(R.layout.fragment_description) {
 
 
     private fun initPage(data: DescriptionMovie) {
+        viewModel.getBilledCast(data.results[0].id)
         binding.descriptionAvatarImgRv.let { imageLoader.loadInto(data.results[0].posterPath, it) }
         binding.descriptionBackImgRv.let { imageLoader.loadInto(data.results[0].backdropPath, it) }
-        //rating
+        binding.descriptionScoreRv.text = data.results[0].voteAverage.toString()
         binding.descriptionTitleRv.text = data.results[0].title
-        binding.descriptionReleaseRv.text = data.results[0].releaseDate
-        //time
-        //genre
+        binding.descriptionReleaseDateRv.text = data.results[0].releaseDate
+        binding.descriptionTimeRv.text //todo
+        binding.descriptionGenreRv.text //todo
         binding.descriptionAboutRv.text = data.results[0].overview
     }
 
@@ -62,9 +65,10 @@ class DescriptionFragment : Fragment(R.layout.fragment_description) {
             is AppState.Success<*> -> {
                 when (appState.data) {
                     is DescriptionMovie -> {
-                        recyclerView.adapter = DescriptionAdapter(appState.data)
                         initPage(appState.data)
-
+                    }
+                    is BilledCast -> {
+                        recyclerView.adapter = DescriptionAdapter(appState.data)
                     }
                 }
             }
