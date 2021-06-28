@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Movie Search</string>
+    <string name="title">Title</string>
+    <string name="about">About</string>
+    <string name="search">Search</string>
+    <string name="find">Find</string>
+    <string name="score">User Score</string>
+    <string name="genre">Genre</string>
+    <string name="time">Time</string>
+    <string name="release">Release</string>
+    <string name="overview">Overview</string>
+    <string name="hero">Hero</string>
+    <string name="name">Name</string>
+    <string name="top_billed_cast">Top Billed Cast</string>
+</resources>
